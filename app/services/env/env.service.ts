@@ -3,17 +3,21 @@ import { z } from 'zod'
 
 type EnvSchema = z.infer<typeof envSchema>
 
+const envObject: EnvSchema = {
+  NEXT_PUBLIC_API: process.env.NEXT_PUBLIC_API ?? '',
+}
+
 /**
  * Schema for validating environment variables.
  */
 const envSchema = z.object({
-  VITE_API_URL: z.string().url(),
+  NEXT_PUBLIC_API: z.string().url(),
 })
 
 /**
  * Parses and validates the environment variables using the defined schema.
  */
-const _env = envSchema.safeParse(import.meta.env)
+const _env = envSchema.safeParse(envObject)
 
 if (_env.success === false) {
   throw new EnvironmentValidationError('Invalid environment variables.')

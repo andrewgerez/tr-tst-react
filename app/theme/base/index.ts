@@ -18,7 +18,7 @@ const baseTheme: BaseTheme = {
   },
   fontWeights: {
     regular: '400',
-    medium: '600',
+    semiBold: '600',
   },
   lineHeights: {
     sm: '1rem',

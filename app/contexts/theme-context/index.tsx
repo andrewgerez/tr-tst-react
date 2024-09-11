@@ -1,3 +1,5 @@
+'use client'
+
 import Loading from '@/components/loading'
 import getDynamicTheme from '@/theme/get-dynamic-theme'
 import { createContext, useEffect, useMemo, useState } from 'react'

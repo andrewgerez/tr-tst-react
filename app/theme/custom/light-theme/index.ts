@@ -1,5 +1,5 @@
-import baseTheme from "@/theme/base";
-import { AppTheme } from "@/theme/types";
+import baseTheme from '@/theme/base'
+import { AppTheme } from '@/theme/types'
 
 /**
  * Light theme configuration for the application.
@@ -27,8 +27,8 @@ const LightTheme: AppTheme = {
       caption: '#88929C',
       green: '#52C41A',
       red: '#ED3833',
-    }
-  }
+    },
+  },
 }
 
 export default LightTheme

@@ -41,7 +41,7 @@ type FontSizes = {
 
 type FontWeight = {
   regular: string
-  medium: string
+  semiBold: string
 }
 
 type LineHeight = {

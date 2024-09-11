@@ -1,5 +1,5 @@
-import baseTheme from "@/theme/base";
-import { AppTheme } from "@/theme/types";
+import baseTheme from '@/theme/base'
+import { AppTheme } from '@/theme/types'
 
 /**
  * Dark theme configuration for the application.

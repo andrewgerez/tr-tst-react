@@ -21,7 +21,7 @@ function Header({ companies }: Readonly<HeaderProps>) {
             variant={ComponentVariant.PRIMARY}
             isActive={company.name === 'Jaguar'}
           >
-            <GoldIcon />
+            <GoldIcon variant={ComponentVariant.PRIMARY} isActive={company.name === 'Jaguar'} />
             {company.name}
           </Button>
         ))}
