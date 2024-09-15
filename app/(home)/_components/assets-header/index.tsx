@@ -1,17 +1,20 @@
 import Button from '@/tokens/button'
+import useDashboardStore from '@/store/dashboard'
 import { ThunderIcon, ExclamationIcon } from '@/assets'
 import { ComponentSize, ComponentVariant } from '@/enums'
 import { AssetsHeaderStyled } from './styles'
 
 function AssetsHeader() {
+  const { currentCompanyActive } = useDashboardStore()
+
   return (
     <AssetsHeaderStyled>
-      <span>
+      <div>
         <h1>Ativos</h1>
-        <h2> / Jaguar</h2>
-      </span>
+        <h2> / {currentCompanyActive?.name}</h2>
+      </div>
 
-      <span>
+      <div>
         <Button size={ComponentSize.DEFAULT} variant={ComponentVariant.SECONDARY} isActive={true}>
           <ThunderIcon variant={ComponentVariant.SECONDARY} isActive={true} />
           Sensor de Energia
@@ -21,7 +24,7 @@ function AssetsHeader() {
           <ExclamationIcon variant={ComponentVariant.SECONDARY} isActive={false} />
           Crítico
         </Button>
-      </span>
+      </div>
     </AssetsHeaderStyled>
   )
 }

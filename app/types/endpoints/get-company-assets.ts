@@ -1,3 +1,5 @@
+import { SensorStatus, SensorType } from "@/enums/business"
+
 /**
  * Represents an asset belonging to a company.
  */
@@ -8,8 +10,8 @@ export type CompanyAsset = {
   name: string
   parentId: string | null
   sensorId: string
-  sensorType: string
-  status: string
+  sensorType: SensorType | null
+  status: SensorStatus | null
 }
 
 /**

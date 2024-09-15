@@ -1,7 +1,7 @@
 /**
  * Represents a company with an ID and a name.
  */
-type Company = {
+export type Company = {
   id: string
   name: string
 }

@@ -5,7 +5,7 @@ export const AssetsHeaderStyled = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  span {
+  div {
     display: flex;
     align-items: center;
     gap: ${({ theme }) => theme.spacing.lg};

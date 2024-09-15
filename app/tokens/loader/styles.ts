@@ -11,7 +11,7 @@ export const StyledLoader = styled.div`
   width: 1.75rem;
   aspect-ratio: 2;
   --_g: no-repeat radial-gradient(circle closest-side, #FFF 90%, #0000);
-  background: 
+  background:
     var(--_g) 0% 50%,
     var(--_g) 50% 50%,
     var(--_g) 100% 50%;

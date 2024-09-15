@@ -8,6 +8,7 @@ export type TokenButtonProps = {
   size: Size
   children?: React.ReactNode
   isActive?: boolean
+  onClick?: () => void
 }
 
 export type StyledButtonProps = {

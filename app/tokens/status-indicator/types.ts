@@ -1,8 +1,8 @@
 import { SensorStatus, SensorType } from '@/enums/business'
 
 export type StatusIndicatorProps = {
-  status: SensorStatus
-  type?: SensorType
+  status: SensorStatus | null
+  type?: SensorType | null
 }
 
 export type StyledStatusIndicatorProps = {

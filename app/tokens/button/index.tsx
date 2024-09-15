@@ -6,10 +6,16 @@ const Button: FC<TokenButtonProps> = ({
   variant,
   size,
   children,
+  onClick,
   isActive = false
 }) => {
   return (
-    <StyledButton $variant={variant} $size={size} $isActive={isActive}>
+    <StyledButton
+      $variant={variant}
+      $size={size}
+      $isActive={isActive}
+      onClick={onClick}
+    >
       {children}
     </StyledButton>
   )

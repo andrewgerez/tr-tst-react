@@ -1,4 +1,3 @@
-import localFont from 'next/font/local'
 import ChildrenLayout from '@/layout/children-layout'
 import StyledComponentsRegistry from '@/layout/styled-components-registry'
 import AppThemeProvider from '@/contexts/theme-context'
@@ -17,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ margin: 0, padding: 0 }}>
         <StyledComponentsRegistry>
           <AppThemeProvider>
             <>

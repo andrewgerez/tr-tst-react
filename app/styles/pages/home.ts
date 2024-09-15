@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 export const HomePageContainer = styled.div`
   height: 100vh;
-
   display: flex;
   flex-direction: column;
 `
 
 export const MainContent = styled.main`
+  flex: 1;
   padding: ${({ theme }) => theme.spacing.lg};
-  height: 100%;
+  overflow: hidden;
 `
 
 export const AssetsWrapper = styled.div`
@@ -32,5 +32,6 @@ export const AssetsContainer = styled.div`
 
   width: 100%;
   height: 100%;
+  overflow: hidden;
   gap: ${({ theme }) => theme.spacing.lg};
 `

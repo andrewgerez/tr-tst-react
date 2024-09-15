@@ -1,7 +1,7 @@
 import ThunderStatusSVGIcon from '@/assets/icons/thunder-status'
-import { SensorType } from '@/enums/business'
-import { StatusStyled } from './styles'
+import { SensorStatus, SensorType } from '@/enums/business'
 import { StatusIndicatorProps } from './types'
+import { StatusStyled } from './styles'
 
 function StatusIndicator({ status, type }: StatusIndicatorProps) {
   if (type === SensorType.ENERGY) {
@@ -9,7 +9,7 @@ function StatusIndicator({ status, type }: StatusIndicatorProps) {
   }
 
   return (
-    <StatusStyled $status={status} />
+    <StatusStyled $status={status ?? SensorStatus.OPERATING} />
   )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import StatusIndicator from '@/tokens/status-indicator'
 import Divider from '@/tokens/divider'
+import useDashboardStore from '@/store/dashboard'
 import { SensorStatus } from '@/enums/business'
 import { EngineAsset, RouterIcon, SensorIcon } from '@/assets'
 import {
@@ -15,11 +16,15 @@ import {
 } from './styles'
 
 function AssetContent() {
+  const { currentAssetActive } = useDashboardStore()
+
+  if (!currentAssetActive) return null
+
   return (
     <ResponsiveContainer>
       <ContentHeader>
-        <h4>MOTOR RT COAL AF01</h4>
-        <StatusIndicator status={SensorStatus.OPERATING} />
+        <h4>{currentAssetActive?.name}</h4>
+        <StatusIndicator status={currentAssetActive?.status} />
       </ContentHeader>
 
       <Divider />
@@ -41,7 +46,7 @@ function AssetContent() {
             <Information>
               <h5>Responsáveis</h5>
               <span>
-                <h6>Motor Elétrico (Trifásico)</h6>
+                <h6>Elétrica</h6>
               </span>
             </Information>
           </InformationWrapper>
@@ -54,7 +59,7 @@ function AssetContent() {
             <h5>Sensor</h5>
             <span>
               <SensorIcon  />
-              <h6>HIO4510</h6>
+              <h6>{currentAssetActive.sensorId}</h6>
             </span>
           </Information>
 
@@ -62,7 +67,7 @@ function AssetContent() {
             <h5>Receptor</h5>
             <span>
               <RouterIcon />
-              <h6>EUH4R27</h6>
+              <h6>{currentAssetActive.gatewayId}</h6>
             </span>
           </Information>
         </AdditionalInformation>

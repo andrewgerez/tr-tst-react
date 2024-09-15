@@ -16,7 +16,8 @@
     "react-query": "^3.39.3",
     "styled-components": "^6.1.13",
     "test-next": "file:",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -25,13 +25,16 @@ async function fetchGetCompanyTree(
  * @param {string} companyId - The ID of the company.
  */
 function useGetCompanyTree(
-  companyId: string | undefined
+  companyId?: string
 ): UseQueryResult<GetCompanyTreeResponse, unknown> {
-  if (!companyId) return {} as UseQueryResult<GetCompanyTreeResponse, unknown>
+  function getCompanyTreeQueryFn(companyId?: string): () => Promise<GetCompanyTreeResponse> {
+    return () => (companyId ? fetchGetCompanyTree(companyId) : Promise.resolve({} as GetCompanyTreeResponse));
+  }
 
   return useQuery({
     queryKey: ['getCompanyTree', companyId],
-    queryFn: () => fetchGetCompanyTree(companyId),
+    queryFn: getCompanyTreeQueryFn(companyId),
+    enabled: !!companyId,
   })
 }
 
