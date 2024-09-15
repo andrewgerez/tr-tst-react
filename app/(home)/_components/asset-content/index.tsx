@@ -2,6 +2,7 @@ import React from 'react'
 import StatusIndicator from '@/tokens/status-indicator'
 import Divider from '@/tokens/divider'
 import Avatar from '@/tokens/avatar'
+import SelectionLoading from '@/components/selection-loading'
 import useDashboardStore from '@/store/dashboard'
 import { EngineAsset, RouterIcon, SensorIcon } from '@/assets'
 import { Teams } from '@/enums/business'
@@ -18,9 +19,9 @@ import {
 } from './styles'
 
 function AssetContent() {
-  const { currentAssetActive }: { currentAssetActive: any } = useDashboardStore()
+  const { currentAssetActive } = useDashboardStore()
 
-  if (!currentAssetActive) return null
+  if (!currentAssetActive) return <SelectionLoading message='Please select an asset.' />
 
   const assetType = getAssetType(currentAssetActive.name)
 

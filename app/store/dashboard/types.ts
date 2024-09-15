@@ -11,4 +11,6 @@ export type DashboardStoreParams = {
 
   currentFilterIdActive: SensorFilter | null
   setCurrentFilterIdActive: (filter: SensorFilter) => void
+
+  cleanAssetAndFilter: () => void
 }

@@ -7,6 +7,7 @@ import AssetContent from '@/(home)/_components/asset-content'
 import useDashboardStore from '@/store/dashboard'
 import Loading from '@/components/loading'
 import { useGetCompanies } from '@/hooks/http'
+import SelectionLoading from '@/components/selection-loading'
 import { HomePageContainer, MainContent, AssetsWrapper, AssetsContainer } from '@/styles/pages/home'
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
       <Header companies={companies} />
 
       <MainContent>
-        {currentCompanyActive && (
+        {currentCompanyActive ? (
           <AssetsWrapper>
             <AssetsHeader />
 
@@ -32,6 +33,8 @@ export default function Home() {
             </AssetsContainer>
 
           </AssetsWrapper>
+        ) : (
+          <SelectionLoading message='Please select a company to view the associated assets.' />
         )}
       </MainContent>
     </HomePageContainer>

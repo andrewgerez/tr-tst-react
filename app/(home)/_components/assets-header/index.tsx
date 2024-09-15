@@ -1,11 +1,20 @@
 import Button from '@/tokens/button'
 import useDashboardStore from '@/store/dashboard'
-import { ThunderIcon, ExclamationIcon } from '@/assets'
 import { ComponentSize, ComponentVariant } from '@/enums'
 import { AssetsHeaderStyled } from './styles'
+import { SensorFilter } from '@/enums/business'
+import { filters } from '@/utils/business/get-filters'
 
 function AssetsHeader() {
-  const { currentCompanyActive } = useDashboardStore()
+  const {
+    currentCompanyActive,
+    currentFilterIdActive,
+    setCurrentFilterIdActive
+  } = useDashboardStore()
+
+  const handleFilterClick = (id: SensorFilter) => {
+    setCurrentFilterIdActive(id)
+  }
 
   return (
     <AssetsHeaderStyled>
@@ -15,15 +24,23 @@ function AssetsHeader() {
       </div>
 
       <div>
-        <Button size={ComponentSize.DEFAULT} variant={ComponentVariant.SECONDARY} isActive={true}>
-          <ThunderIcon variant={ComponentVariant.SECONDARY} isActive={true} />
-          Sensor de Energia
-        </Button>
+        {filters.map((filter) => {
+          const Icon = filter.icon
 
-        <Button size={ComponentSize.DEFAULT} variant={ComponentVariant.SECONDARY}>
-          <ExclamationIcon variant={ComponentVariant.SECONDARY} isActive={false} />
-          Crítico
-        </Button>
+          return (
+            <Button
+              key={filter.id}
+              id={filter.id}
+              size={ComponentSize.DEFAULT}
+              variant={ComponentVariant.SECONDARY}
+              isActive={currentFilterIdActive === filter.id}
+              onClick={() => handleFilterClick(filter.id)}
+            >
+              <Icon variant={ComponentVariant.SECONDARY} isActive={currentFilterIdActive === filter.id} />
+              {filter.label}
+            </Button>
+          )
+        })}
       </div>
     </AssetsHeaderStyled>
   )

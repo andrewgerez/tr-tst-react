@@ -4,6 +4,7 @@ type Variant = ComponentVariant.PRIMARY | ComponentVariant.SECONDARY
 type Size = ComponentSize.SMALL | ComponentSize.DEFAULT
 
 export type TokenButtonProps = {
+  id?: string
   variant: Variant
   size: Size
   children?: React.ReactNode

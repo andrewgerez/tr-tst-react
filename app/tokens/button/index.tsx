@@ -3,6 +3,7 @@ import { StyledButton } from '@/tokens/button/styles'
 import { TokenButtonProps } from '@/tokens/button/types'
 
 const Button: FC<TokenButtonProps> = ({
+  id,
   variant,
   size,
   children,
@@ -11,6 +12,7 @@ const Button: FC<TokenButtonProps> = ({
 }) => {
   return (
     <StyledButton
+      id={id}
       $variant={variant}
       $size={size}
       $isActive={isActive}
