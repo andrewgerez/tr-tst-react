@@ -77,7 +77,7 @@ function filterCompanyTree(locations: LocationWithAssets[], sensorFilter: string
 function useGetCompanyTree(
   companyId?: string
 ): UseQueryResult<GetCompanyTreeResponse, unknown> {
-  const { currentFilterIdActive } = useDashboardStore()
+  const { currentFilterIdActive, setIsReadyToRenderContent } = useDashboardStore()
 
   function getCompanyTreeQueryFn(
     companyId?: string
@@ -88,10 +88,14 @@ function useGetCompanyTree(
   return useQuery({
     queryKey: ['getCompanyTree', companyId, currentFilterIdActive],
     queryFn: async () => {
+      setIsReadyToRenderContent(false)
       const data = await getCompanyTreeQueryFn(companyId)()
       const filteredData = filterCompanyTree(data, currentFilterIdActive)
 
       return filteredData
+    },
+    onSuccess: () => {
+      setIsReadyToRenderContent(true)
     },
     enabled: !!companyId,
   })

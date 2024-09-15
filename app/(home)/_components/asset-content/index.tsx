@@ -19,8 +19,9 @@ import {
 } from './styles'
 
 function AssetContent() {
-  const { currentAssetActive } = useDashboardStore()
+  const { currentAssetActive, isReadyToRenderContent } = useDashboardStore()
 
+  if (!isReadyToRenderContent) return null
   if (!currentAssetActive) return <SelectionLoading message='Please select an asset.' />
 
   const assetType = getAssetType(currentAssetActive.name)

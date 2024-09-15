@@ -24,6 +24,19 @@ const useDashboardStore = create<DashboardStoreParams>((set, get) => ({
     set(() => ({ currentFilterIdActive: filter }))
   },
 
+  isReadyToRenderContent: false,
+  setIsReadyToRenderContent: (value: boolean) => {
+    const { cleanAsset } = get()
+
+    if (!value) cleanAsset()
+
+    set(() => ({ isReadyToRenderContent: value }))
+  },
+
+  cleanAsset: () => {
+    set(() => ({ currentAssetActive: null }))
+  },
+
   cleanAssetAndFilter: () => {
     set(() => ({
       currentAssetActive: null,
