@@ -51,7 +51,7 @@ const TreeNodeComponent = ({
         )}
         {nodeElement.type === TreeElementType.COMPONENT ? (
           <ComponentItem
-            isActive={currentAssetActive?.id === nodeElement.id}
+            $isActive={currentAssetActive?.id === nodeElement.id}
             onClick={() => handleAssetClick(nodeElement as ExtendedCompanyAsset)}
           >
             {renderIcon(nodeElement)}

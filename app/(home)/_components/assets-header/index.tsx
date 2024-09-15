@@ -36,7 +36,7 @@ function AssetsHeader() {
               isActive={currentFilterIdActive === filter.id}
               onClick={() => handleFilterClick(filter.id)}
             >
-              <Icon variant={ComponentVariant.SECONDARY} isActive={currentFilterIdActive === filter.id} />
+              <Icon $variant={ComponentVariant.SECONDARY} $isActive={currentFilterIdActive === filter.id} />
               {filter.label}
             </Button>
           )

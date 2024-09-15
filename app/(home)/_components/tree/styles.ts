@@ -45,14 +45,14 @@ export const AssetContainer = styled.div`
   cursor: pointer;
 `
 
-export const ComponentItem = styled.div<{isActive: boolean}>`
+export const ComponentItem = styled.div<{$isActive: boolean}>`
   display: flex;
   align-items: center;
 
   width: 100%;
   gap: ${({ theme }) => theme.spacing.xs};
 
-  ${({ isActive, theme }) => isActive && `
+  ${({ $isActive, theme }) => $isActive && `
     background-color: ${theme.palette.primary.blue500};
 
     svg {

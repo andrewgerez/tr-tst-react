@@ -43,9 +43,7 @@ const AppThemeProvider = ({ children }: ThemeContextProps): JSX.Element => {
     theme, loading, error
   }), [theme, loading, error])
 
-  if (loading || error) {
-    return <Loading />
-  }
+  if (loading || error) return <div></div>
 
   return (
     <ThemeContext.Provider value={value}>

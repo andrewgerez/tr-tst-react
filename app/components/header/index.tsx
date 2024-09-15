@@ -28,8 +28,8 @@ function Header({ companies }: Readonly<HeaderProps>) {
             onClick={() => handleCompanyClick(company)}
           >
             <GoldIcon
-              variant={ComponentVariant.PRIMARY}
-              isActive={company.id === currentCompanyActive?.id}
+              $variant={ComponentVariant.PRIMARY}
+              $isActive={company.id === currentCompanyActive?.id}
             />
             {company.name}
           </Button>

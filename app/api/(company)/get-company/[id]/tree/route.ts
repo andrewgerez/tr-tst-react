@@ -10,9 +10,11 @@ import { NextResponse } from 'next/server'
  * @param {string} context.params.id - The company ID.
  * @returns {Promise<NextResponse>} The response containing the company tree.
  */
-export async function GET(_: Request, { params }: { params: { id: string } }): Promise<NextResponse> {
+export async function GET(request: Request, { params }: { params: { id: string } }): Promise<NextResponse> {
   try {
     const headers = { 'Content-Type': 'application/json' }
+    const url = new URL(request.url)
+    const sensorFilter = url.searchParams.get('sensorFilter')
 
     const [locations, assets] = await Promise.all([
       fetch(`${env.NEXT_PUBLIC_API}companies/${params.id}/locations`, { method: 'GET', headers }).then(res => res.json()),

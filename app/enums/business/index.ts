@@ -9,8 +9,8 @@ export enum SensorType {
 }
 
 export enum SensorFilter {
-  ENERGY_SENSOR = 'energy_sensor',
-  CRITICAL = 'critical',
+  ENERGY_SENSOR = 'energy',
+  CRITICAL = 'alert',
 }
 
 export enum TreeElementType {
