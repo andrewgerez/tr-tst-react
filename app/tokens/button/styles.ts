@@ -45,7 +45,7 @@ const getGap = (theme: DefaultTheme, size: ComponentSize) => {
 const getPadding = (theme: DefaultTheme, size: ComponentSize) => {
   return size === ComponentSize.SMALL
     ? `${theme.spacing.xs} ${theme.spacing.lg}`
-    : `${theme.spacing.sm} ${theme.spacing.x3l} ${theme.spacing.sm} ${theme.spacing.x2l}`
+    : `${theme.spacing.sm} ${theme.spacing.x4l} ${theme.spacing.sm} ${theme.spacing.x3l}`
 }
 
 const getBorder = (theme: DefaultTheme, variant: ComponentVariant, isActive: boolean) => {

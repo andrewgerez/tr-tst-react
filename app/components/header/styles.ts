@@ -22,4 +22,9 @@ export const Container = styled.header`
     width: 6.4375rem;
     height: 0.875rem;
   }
+
+  #logo {
+    width: 6.4375rem;
+    height: 0.875rem;
+  }
 `

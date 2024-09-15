@@ -41,9 +41,10 @@ const baseTheme: BaseTheme = {
     md: '0.4375rem',
     lg: '0.5rem',
     xl: '0.625rem',
-    x2l: '0.875rem',
-    x3l: '1rem',
-    x4l: '1.5rem',
+    x2l: '0.75rem',
+    x3l: '0.875rem',
+    x4l: '1rem',
+    x5l: '1.5rem',
   }
 }
 

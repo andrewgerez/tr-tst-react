@@ -16,8 +16,8 @@ type PrimaryColors = {
 type UtilityColors = {
   placeholder: string
   caption: string
-  green: string
-  red: string
+  operating: string
+  alert: string
 }
 
 type Palette = {
@@ -71,6 +71,7 @@ type Spacing = {
   x2l: string
   x3l: string
   x4l: string
+  x5l: string
 }
 
 export type BaseTheme = {

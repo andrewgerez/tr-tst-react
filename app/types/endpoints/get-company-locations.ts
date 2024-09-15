@@ -1,10 +1,19 @@
 /**
  * Represents a location belonging to a company.
  */
-type CompanyLocation = {
+export type CompanyLocation = {
   id: string
   name: string
   parentId: string
+}
+
+/**
+ * Represents a structured location, which includes the location's children.
+ */
+export type StructuredLocation = {
+  id: string
+  name: string
+  children: CompanyLocation[]
 }
 
 /**

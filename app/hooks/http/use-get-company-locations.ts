@@ -15,7 +15,9 @@ async function fetchGetCompanyLocations(
     throw new Error('Invalid company ID format.')
   }
 
-  return await APIService.getInstance().getCompanyLocations(companyId)
+  const data = await APIService.getInstance().getCompanyLocations(companyId)
+
+  return data
 }
 
 /**

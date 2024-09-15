@@ -9,7 +9,7 @@ class NetworkService {
 
   private network: AxiosInstance
   private static axiosConfig = {
-    baseURL: env.NEXT_PUBLIC_API,
+    baseURL: env.NEXT_PUBLIC_BFF_URL,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

@@ -25,8 +25,8 @@ const DarkTheme: AppTheme = {
     utility: {
       placeholder: '#C1C9D2',
       caption: '#88929C',
-      green: '#52C41A',
-      red: '#ED3833',
+      operating: '#52C41A',
+      alert: '#ED3833',
     }
   }
 }

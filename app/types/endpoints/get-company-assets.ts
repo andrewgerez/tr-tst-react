@@ -1,7 +1,7 @@
 /**
  * Represents an asset belonging to a company.
  */
-type CompanyAsset = {
+export type CompanyAsset = {
   gatewayId: string
   id: string
   locationId: string

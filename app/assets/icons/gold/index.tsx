@@ -1,6 +1,6 @@
 import React from 'react'
 import { CustomSVGProps } from '@/assets/icons/types'
-import { StyledIconSVG } from '@/styles/global'
+import { StyledIconSVG } from '@/styles/components'
 
 const GoldSVGIcon: React.FC<CustomSVGProps> = (props) => (
   <StyledIconSVG

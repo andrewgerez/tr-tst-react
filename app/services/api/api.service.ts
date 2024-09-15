@@ -3,6 +3,7 @@ import { Endpoints } from '@/enums'
 import { Companies } from '@/types/endpoints/get-companies'
 import { GetCompanyAssetsResponse } from '@/types/endpoints/get-company-assets'
 import { GetCompanyLocationsResponse } from '@/types/endpoints/get-company-locations'
+import { GetCompanyTreeResponse } from '@/types/endpoints/get-company-tree'
 
 /**
  * Service class for making API calls.
@@ -45,7 +46,7 @@ class APIService {
    */
   public async getCompanyLocations(companyId: string): Promise<GetCompanyLocationsResponse> {
     return await this.networkService.get<GetCompanyLocationsResponse>(
-      `${Endpoints.GET_COMPANIES}/${companyId}/${Endpoints.GET_LOCATIONS}`
+      `${Endpoints.GET_COMPANY}/${companyId}/${Endpoints.GET_LOCATIONS}`
     )
   }
 
@@ -57,9 +58,20 @@ class APIService {
    */
   public async getCompanyAssets(companyId: string): Promise<GetCompanyAssetsResponse> {
     return await this.networkService.get<GetCompanyAssetsResponse>(
-      `${Endpoints.GET_COMPANIES}/${companyId}/${Endpoints.GET_ASSETS}`
+      `${Endpoints.GET_COMPANY}/${companyId}/${Endpoints.GET_ASSETS}`
     )
   }
+
+    /**
+   * Fetches the full tree of a specific company.
+   * @param {string} companyId - The ID of the company.
+   * @returns {Promise<any>} A promise that resolves to the full tree of the company.
+   */
+    public async getCompanyTree(companyId: string): Promise<GetCompanyTreeResponse> {
+      return await this.networkService.get<GetCompanyTreeResponse>(
+        `${Endpoints.GET_COMPANY}/${companyId}/${Endpoints.GET_TREE}`
+      )
+    }
 }
 
 export default APIService

@@ -1,6 +1,6 @@
 import React from 'react'
 import { CustomSVGProps } from '@/assets/icons/types'
-import { StyledIconSVG } from '@/styles/global'
+import { StyledIconSVG } from '@/styles/components'
 
 const ThunderSVGIcon: React.FC<CustomSVGProps> = (props) => (
   <StyledIconSVG
@@ -9,8 +9,6 @@ const ThunderSVGIcon: React.FC<CustomSVGProps> = (props) => (
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    $variant={props.variant}
-    $isActive={props.isActive}
     {...props}
   >
     <path

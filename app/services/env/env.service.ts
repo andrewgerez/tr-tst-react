@@ -5,6 +5,7 @@ type EnvSchema = z.infer<typeof envSchema>
 
 const envObject: EnvSchema = {
   NEXT_PUBLIC_API: process.env.NEXT_PUBLIC_API ?? '',
+  NEXT_PUBLIC_BFF_URL: process.env.NEXT_PUBLIC_BFF_URL ?? '',
 }
 
 /**
@@ -12,6 +13,7 @@ const envObject: EnvSchema = {
  */
 const envSchema = z.object({
   NEXT_PUBLIC_API: z.string().url(),
+  NEXT_PUBLIC_BFF_URL: z.string().url(),
 })
 
 /**

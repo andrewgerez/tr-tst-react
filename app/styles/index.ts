@@ -26,7 +26,7 @@ const robotoFont = localFont({
 
 const resolution: number = window.innerWidth
 const defaultResolution = 1920
-const baseFontSize = 16
+const baseFontSize = defaultResolution * 0.01
 
 const percentagePerResolution = (resolution * 100) / defaultResolution
 const percentageInPixel = (baseFontSize * percentagePerResolution) / 100
@@ -50,7 +50,13 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: ${interFont.style.fontFamily};
+    background-color: ${({ theme }) => theme.palette.neutral.gray150};
     font-weight: 600;
+  }
+
+  h1 {
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+    color: ${({ theme }) => theme.palette.neutral.gray950};
   }
 
   h2 {
@@ -62,16 +68,30 @@ export const GlobalStyles = createGlobalStyle`
 
   h3 {
     font-family: ${robotoFont.style.fontFamily};
-    font-size: ${({ theme }) => theme.fontSizes.xl};
+    font-size: ${({ theme }) => theme.fontSizes.sm};
     font-weight: ${({ theme }) => theme.fontWeights.regular};
-    line-height: ${({ theme }) => theme.lineHeights.x2l};
+    line-height: ${({ theme }) => theme.lineHeights.lg};
     color: ${({ theme }) => theme.palette.primary.blue950};
   }
 
   h4 {
+    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    color: ${({ theme }) => theme.palette.neutral.gray950};
+    line-height: ${({ theme }) => theme.lineHeights.x2l};
+  }
+
+  h5 {
+    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+    font-size: ${({ theme }) => theme.fontSizes.md};
+    color: ${({ theme }) => theme.palette.neutral.gray950};
+    line-height: ${({ theme }) => theme.lineHeights.xl};
+  }
+
+  h6 {
     font-weight: ${({ theme }) => theme.fontWeights.regular};
     font-size: ${({ theme }) => theme.fontSizes.md};
-    color: ${({ theme }) => theme.palette.utility.caption};
+    color: ${({ theme }) => theme.palette.neutral.gray500};
     line-height: ${({ theme }) => theme.lineHeights.xl};
   }
 `

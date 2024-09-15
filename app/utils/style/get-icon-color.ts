@@ -1,7 +1,7 @@
 import { ComponentVariant } from '@/enums'
-import styled, { DefaultTheme } from 'styled-components'
+import { DefaultTheme } from 'styled-components'
 
-const getIconColor = (
+export const getIconColor = (
   theme: DefaultTheme,
   variant: ComponentVariant,
   isActive: boolean
@@ -10,7 +10,3 @@ const getIconColor = (
 
   return isActive ? theme.palette.neutral.white : theme.palette.primary.blue500
 }
-
-export const StyledIconSVG = styled.svg<{ $variant: ComponentVariant; $isActive: boolean }>`
-  color: ${({ theme, $variant, $isActive }) => getIconColor(theme, $variant, $isActive)};
-`
