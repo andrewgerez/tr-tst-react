@@ -1,5 +1,5 @@
 {
-  "name": "test-next",
+  "name": "tr-tst-react",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "react-dom": "^18",
     "react-query": "^3.39.3",
     "styled-components": "^6.1.13",
-    "test-next": "file:",
+    "tr-tst-react": "file:",
     "zod": "^3.23.8",
     "zustand": "^5.0.0-rc.2"
   },
