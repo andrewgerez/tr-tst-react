@@ -1,9 +1,11 @@
 import React from 'react'
 import StatusIndicator from '@/tokens/status-indicator'
 import Divider from '@/tokens/divider'
+import Avatar from '@/tokens/avatar'
 import useDashboardStore from '@/store/dashboard'
-import { SensorStatus } from '@/enums/business'
 import { EngineAsset, RouterIcon, SensorIcon } from '@/assets'
+import { Teams } from '@/enums/business'
+import { getAssetType } from '@/utils/business/get-asset-type'
 import {
   AdditionalInformation,
   ContentHeader,
@@ -16,9 +18,11 @@ import {
 } from './styles'
 
 function AssetContent() {
-  const { currentAssetActive } = useDashboardStore()
+  const { currentAssetActive }: { currentAssetActive: any } = useDashboardStore()
 
   if (!currentAssetActive) return null
+
+  const assetType = getAssetType(currentAssetActive.name)
 
   return (
     <ResponsiveContainer>
@@ -38,7 +42,7 @@ function AssetContent() {
           <InformationWrapper>
             <Information>
               <h5>Tipo de Equipamento</h5>
-              <h6>Motor Elétrico (Trifásico)</h6>
+              <h6>{assetType}</h6>
             </Information>
 
             <Divider />
@@ -46,6 +50,7 @@ function AssetContent() {
             <Information>
               <h5>Responsáveis</h5>
               <span>
+                <Avatar identifier={Teams.ELETRICAL} />
                 <h6>Elétrica</h6>
               </span>
             </Information>

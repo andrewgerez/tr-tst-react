@@ -5,6 +5,7 @@ export enum SensorStatus {
 
 export enum SensorType {
   ENERGY = 'energy',
+  VIBRATION = 'vibration',
 }
 
 export enum SensorFilter {
@@ -16,4 +17,9 @@ export enum TreeElementType {
   LOCATION = 'location',
   ASSET = 'asset',
   COMPONENT = 'component',
+}
+
+export enum Teams {
+  ENGINEERING = 'engineering_team',
+  ELETRICAL = 'eletrical_team',
 }

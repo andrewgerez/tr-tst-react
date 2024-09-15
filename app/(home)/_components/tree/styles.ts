@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const TreeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: ${({ theme }) => theme.spacing.md};
   padding-left: ${({ theme }) => theme.spacing.lg};
   border-left: 1px solid ${({ theme }) => theme.palette.neutral.gray200};
 `

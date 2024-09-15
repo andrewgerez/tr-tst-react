@@ -31,4 +31,5 @@ export const TreeScrollWrapper = styled.div`
   height: 100%;
   width: 100%;
   overflow-y: scroll;
+  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.xl};
 `
