@@ -3,7 +3,7 @@ import useDashboardStore from '@/store/dashboard'
 import { useQuery, UseQueryResult } from 'react-query'
 import { isValidCompanyId } from '@/utils/regex/company-id-validator'
 import { GetCompanyTreeResponse, LocationWithAssets } from '@/types/endpoints/get-company-tree'
-import { SensorFilter, TreeElementType } from '@/enums/business'
+import { TreeElementType } from '@/enums/business'
 
 /**
  * Fetches the full tree of a specific company from the API.
@@ -12,13 +12,12 @@ import { SensorFilter, TreeElementType } from '@/enums/business'
  */
 async function fetchGetCompanyTree(
   companyId: string,
-  sensorFilter?: SensorFilter | null
 ): Promise<GetCompanyTreeResponse> {
   if (!isValidCompanyId(companyId)) {
     throw new Error('Invalid company ID format.')
   }
 
-  const data = await APIService.getInstance().getCompanyTree(companyId, sensorFilter)
+  const data = await APIService.getInstance().getCompanyTree(companyId)
 
   return data
 }
@@ -81,15 +80,15 @@ function useGetCompanyTree(
   const { currentFilterIdActive } = useDashboardStore()
 
   function getCompanyTreeQueryFn(
-    companyId?: string, sensorFilter?: SensorFilter | null
+    companyId?: string
   ): () => Promise<GetCompanyTreeResponse> {
-    return () => (companyId ? fetchGetCompanyTree(companyId, sensorFilter) : Promise.resolve({} as GetCompanyTreeResponse))
+    return () => (companyId ? fetchGetCompanyTree(companyId) : Promise.resolve({} as GetCompanyTreeResponse))
   }
 
   return useQuery({
     queryKey: ['getCompanyTree', companyId, currentFilterIdActive],
     queryFn: async () => {
-      const data = await getCompanyTreeQueryFn(companyId, currentFilterIdActive)()
+      const data = await getCompanyTreeQueryFn(companyId)()
       const filteredData = filterCompanyTree(data, currentFilterIdActive)
 
       return filteredData
