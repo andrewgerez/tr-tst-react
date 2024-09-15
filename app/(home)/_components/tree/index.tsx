@@ -3,6 +3,7 @@ import useDashboardStore from '@/store/dashboard'
 import { TreeLocationIcon, TreeAssetIcon, TreeComponentIcon, ArrowIcon } from '@/assets'
 import { TreeElementType } from '@/enums/business'
 import { LocationWithAssets, ExtendedCompanyAsset, Asset } from '@/types/endpoints/get-company-tree'
+import { isIsolatedComponent, isExtendedCompanyAsset, isAsset } from '@/utils/business/tree-helper'
 import { useState } from 'react'
 import { TreeProps } from './types'
 import { TreeNode, NodeContent, ExpandIcon, NodeLabel, AssetContainer, TreeContainer, ComponentItem } from './styles'
@@ -100,18 +101,6 @@ const TreeNodeComponent = ({
       )}
     </TreeNode>
   )
-}
-
-function isAsset(node: any): node is ExtendedCompanyAsset {
-  return 'sensorType' in node && 'locationId' in node && 'parentId' in node
-}
-
-function isIsolatedComponent(node: LocationWithAssets | ExtendedCompanyAsset): boolean {
-  return node.components?.length === 1 && node.name === node.components[0].name
-}
-
-const isExtendedCompanyAsset = (node: LocationWithAssets | ExtendedCompanyAsset): node is ExtendedCompanyAsset => {
-  return 'status' in node
 }
 
 function Tree({ data }: TreeProps) {
