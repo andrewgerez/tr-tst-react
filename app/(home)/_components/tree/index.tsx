@@ -56,7 +56,9 @@ const TreeNodeComponent = ({
           >
             {renderIcon(nodeElement)}
             <h3>{nodeElement.name}</h3>
-            {isExtendedCompanyAsset(nodeElement) && <StatusIndicator status={nodeElement.status} />}
+            {isExtendedCompanyAsset(nodeElement) &&
+              <StatusIndicator status={nodeElement.status} type={nodeElement.sensorType} />
+            }
           </ComponentItem>
         ) : (
           <NodeLabel>
