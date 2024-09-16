@@ -58,13 +58,13 @@ This project was developed using the following technologies:
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
+* [![Axios][Axios]][Axios-url]
 * [![Tanstack Query][Tanstack-Query]][Tanstack-Query-url]
 * [![Tanstack Virtual][Tanstack-Virtual]][Tanstack-Virtual-url]
-* [![Zustand][Zustand]][Zustand-url]
+* [![Testing-library][Testing-library]][Testing-library-url]
 * [![Vitest][Vitest]][Vitest-url]
 * [![Zod][Zod]][Zod-url]
-* [![Axios][Axios]][Axios-url]
-* [![Testing-library][Testing-library]][Testing-library-url]
+* [![Zustand][Zustand]][Zustand-url]
   
 ## Getting Started
 
