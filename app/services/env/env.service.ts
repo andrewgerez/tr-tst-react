@@ -1,5 +1,8 @@
 import { EnvironmentValidationError } from '@/errors/environment-validation-error'
 import { z } from 'zod'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 type EnvSchema = z.infer<typeof envSchema>
 
