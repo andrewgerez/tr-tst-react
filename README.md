@@ -40,7 +40,7 @@ The project was developed using Next.js version 14, leveraging several key techn
 
 Although it's a SPA, the project is large, complex, and challenging. I aimed for a clean architecture, applying SOLID principles with service layers, a Network Service built with Axios, an API Service implemented as a singleton, and an Atomic Design approach with tokens.
 
-The primary focus of the project was performance, particularly in rendering large lists, applying filters, and managing state, cache, and memory. DOM virtualization was crucial to ensure that, even with 50, 100, or 400 elements returned from the endpoint, only the visible items in the container were rendered. The video showcases an average of 16 items rendered at a time.
+The primary focus of the project was performance, particularly in rendering large lists, applying filters, and managing state, cache, and memory. DOM virtualization was crucial to ensure that, even with 50, 100, or 400 elements returned from the endpoint, only the visible items in the container were rendered. The video showcases an average of 25 items rendered at a time.
 
 #### Areas to improve if more time was available:
 
