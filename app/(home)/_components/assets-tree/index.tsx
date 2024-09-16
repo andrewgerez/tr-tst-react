@@ -26,29 +26,30 @@ function AssetsTree() {
 
   return (
     <ListContainer>
-      {isNotAbleToRender ? (
-        <Centralizer>
-          <AnimatedLoader />
-        </Centralizer>
-      ) : (
-        <>
-          <InputWrapper>
-            <Input
-              type='text'
-              value={filterQuery}
-              placeholder='Buscar Ativo ou Local'
-              onChange={handleInputChange}
-            />
-            <SearchIcon />
-          </InputWrapper>
+      <>
+        <InputWrapper>
+          <Input
+            type='text'
+            value={filterQuery}
+            placeholder='Buscar Ativo ou Local'
+            onChange={handleInputChange}
+            disabled={isNotAbleToRender}
+          />
+          <SearchIcon />
+        </InputWrapper>
 
-          <Divider />
+        <Divider />
 
-          <TreeScrollWrapper>
+        <TreeScrollWrapper>
+          {isNotAbleToRender ? (
+            <Centralizer>
+              <AnimatedLoader />
+            </Centralizer>
+          ) : (
             <Tree data={tree} />
-          </TreeScrollWrapper>
-        </>
-      )}
+          )}
+        </TreeScrollWrapper>
+      </>
     </ListContainer>
   )
 }
