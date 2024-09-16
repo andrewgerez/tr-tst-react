@@ -50,8 +50,6 @@ The primary focus of the project was performance, particularly in rendering larg
 
 * Using the developed multi-theme support: The structure for the Dark Theme is ready, but the project defaulted to the Light Theme. With more time, I would have adjusted the color palette and implemented a theme switcher.
 
-* Additional Next.js features: There was still interest in exploring features like Server Components and Actions.
-
 * Get greater test coverage: rendering, dom, and stress testing.
 
 ### Built With
