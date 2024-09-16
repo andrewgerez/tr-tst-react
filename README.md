@@ -87,7 +87,11 @@ Prerequisites for installing and running the application locally.
    ```sh
    npm install
    ```
-3. Run the app
+3. Set the environment variables
+   ```sh
+   Example in .env.example
+   ```
+4. Run the app
    ```sh
    npm run dev
    ```
@@ -96,12 +100,12 @@ Prerequisites for installing and running the application locally.
    or use docker :)
 
 
-4. Build the container using Docker Compose
+5. Build the container using Docker Compose
    ```sh
    docker-compose build
    ```
 
-5. Start the container using Docker Compose
+6. Start the container using Docker Compose
    ```sh
    docker-compose up
    ```
