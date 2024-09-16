@@ -34,6 +34,23 @@
 
 [![TS-TST-REACT - Environment][product-screenshot]]()
 
+#### Demonstration Video: https://youtu.be/4ic1Qhtfa4A
+
+The project was developed using Next.js version 14, leveraging several key technologies such as TanStack Query, TanStack Virtual, and Zustand. These tools were essential for managing HTTP state, global state, and DOM virtualization, ensuring efficient memory allocation.
+
+Although it's a SPA, the project is large, complex, and challenging. I aimed for a clean architecture, applying SOLID principles with service layers, a Network Service built with Axios, an API Service implemented as a singleton, and an Atomic Design approach with tokens.
+
+The primary focus of the project was performance, particularly in rendering large lists, applying filters, and managing state, cache, and memory. DOM virtualization was crucial to ensure that, even with 50, 100, or 400 elements returned from the endpoint, only the visible items in the container were rendered. The video showcases an average of 16 items rendered at a time.
+
+#### Areas to improve if more time was available:
+
+* HTTP Pagination with Infinity Query: Alongside DOM virtualization, this solution would be a highly scalable combo for handling large lists. If pagination from the endpoint wasn't possible, it could be implemented through Next.js' BFF.
+
+* Responsiveness: Since the focus was performance, I dedicated all my time to optimization, leaving less time to work on making the app fully responsive for mobile devices.
+
+* Using the developed multi-theme support: The structure for the Dark Theme is ready, but the project defaulted to the Light Theme. With more time, I would have adjusted the color palette and implemented a theme switcher.
+
+* Additional Next.js features: There was still interest in exploring features like Server Components and Actions.
 
 ### Built With
 
