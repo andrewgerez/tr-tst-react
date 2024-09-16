@@ -3,7 +3,7 @@
     <img src="app/assets/readme/example.png" alt="Example">
   </a>
 
-  <h3 align="center">@ Tractian - Test</h3>
+  <h3 align="center">@ Tractian - Challenge</h3>
 
   <p align="center">
     a dashboard of company assets.
