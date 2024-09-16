@@ -107,7 +107,7 @@ Prerequisites for installing and running the application locally.
 
 6. Start the container using Docker Compose
    ```sh
-   docker-compose up
+   docker compose up
    ```
    
 ## Contact
