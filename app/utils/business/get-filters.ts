@@ -1,4 +1,4 @@
-import { ThunderIcon } from '@/assets'
+import { ExclamationIcon, ThunderIcon } from '@/assets'
 import { CustomSVGProps } from '@/assets/icons/types'
 import { SensorFilter } from '@/enums/business'
 import { FC } from 'react'
@@ -17,7 +17,7 @@ export const filters: Array<{ id: SensorFilter; icon: FC<CustomSVGProps>; label:
   },
   {
     id: SensorFilter.CRITICAL,
-    icon: ThunderIcon,
+    icon: ExclamationIcon,
     label: 'Crítico'
   }
 ]

@@ -21,7 +21,10 @@ const useDashboardStore = create<DashboardStoreParams>((set, get) => ({
 
   currentFilterIdActive: null,
   setCurrentFilterIdActive: (filter: SensorFilter) => {
-    set(() => ({ currentFilterIdActive: filter }))
+    const { currentFilterIdActive } = get()
+    const newValue = currentFilterIdActive === filter ? null : filter
+
+    set(() => ({ currentFilterIdActive: newValue }))
   },
 
   filterQuery: '',
