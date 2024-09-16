@@ -58,9 +58,14 @@ This project was developed using the following technologies:
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
-
-
-
+* [![Tanstack Query][Tanstack-Query]][Tanstack-Query-url]
+* [![Tanstack Virtual][Tanstack-Virtual]][Tanstack-Virtual-url]
+* [![Zustand][Zustand]][Zustand-url]
+* [![Vitest][Vitest]][Vitest-url]
+* [![Zod][Zod]][Zod-url]
+* [![Axios][Axios]][Axios-url]
+* [![Testing-library][Testing-library]][Testing-library-url]
+  
 ## Getting Started
 
 Prerequisites for installing and running the application locally.
@@ -108,6 +113,20 @@ Project Link: [https://github.com/andrewgerez/tr-tst-react](https://github.com/a
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[TanStack-Query]: https://img.shields.io/badge/tanstack%20query-orange?style=for-the-badge
+[TanStack-Query-url]: https://tanstack.com/query/latest
+[TanStack-Virtual]: https://img.shields.io/badge/tanstack%20virtual-purple?style=for-the-badge
+[TanStack-Virtual-url]: https://tanstack.com/virtual/latest
+[Zustand]: https://img.shields.io/badge/zustand-black?style=for-the-badge
+[Zustand-url]: https://zustand-demo.pmnd.rs/
+[Vitest]: https://img.shields.io/badge/vitest-B9FF66?style=for-the-badge
+[Vitest-url]: https://vitest.dev/
+[Zod]: https://img.shields.io/badge/zod-601EF9?style=for-the-badge
+[Zod-url]: https://zod.dev/
+[Axios]: https://img.shields.io/badge/axios-4C00B0?style=for-the-badge
+[Axios-url]: https://img.shields.io/badge/axios-blue?style=for-the-badge
+[Testing-library]: https://img.shields.io/badge/testing%20library-FA8072?style=for-the-badge
+[Testing-library-url]: https://testing-library.com/
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
 [Vue-url]: https://vuejs.org/
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
