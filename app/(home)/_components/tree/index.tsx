@@ -81,7 +81,8 @@ const TreeNodeComponent = ({
 }
 
 function Tree({ data }: TreeProps) {
-  const { currentAssetActive, setCurrentAssetActive } = useDashboardStore()
+  const currentAssetActive = useDashboardStore((state) => state.currentAssetActive)
+  const setCurrentAssetActive = useDashboardStore((state) => state.setCurrentAssetActive)
   const parentRef = useRef<HTMLDivElement | null>(null)
   const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set())
 

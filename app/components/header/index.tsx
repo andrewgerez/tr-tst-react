@@ -3,17 +3,20 @@ import useDashboardStore from '@/store/dashboard'
 import { GoldIcon, Logo } from '@/assets'
 import { Companies, Company } from '@/types/endpoints/get-companies'
 import { ComponentSize, ComponentVariant } from '@/enums'
+import { memo, useCallback } from 'react'
 import { Container } from './styles'
-import { memo } from 'react'
 
 type HeaderProps = {
   companies?: Companies
 }
 
 function Header({ companies }: Readonly<HeaderProps>) {
-  const { currentCompanyActive, setCurrentCompanyActive } = useDashboardStore()
+  const currentCompanyActive = useDashboardStore((state) => state.currentCompanyActive)
+  const setCurrentCompanyActive = useDashboardStore((state) => state.setCurrentCompanyActive)
 
-  const handleCompanyClick = (company: Company) => setCurrentCompanyActive(company)
+  const handleCompanyClick = useCallback((company: Company) => {
+    setCurrentCompanyActive(company)
+  }, [setCurrentCompanyActive])
 
   return (
     <Container>

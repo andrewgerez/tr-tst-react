@@ -1,20 +1,19 @@
 import Button from '@/tokens/button'
 import useDashboardStore from '@/store/dashboard'
 import { ComponentSize, ComponentVariant } from '@/enums'
-import { AssetsHeaderStyled } from './styles'
 import { SensorFilter } from '@/enums/business'
+import { memo, useCallback } from 'react'
 import { filters } from '@/utils/business/get-filters'
+import { AssetsHeaderStyled } from './styles'
 
 function AssetsHeader() {
-  const {
-    currentCompanyActive,
-    currentFilterIdActive,
-    setCurrentFilterIdActive
-  } = useDashboardStore()
+  const currentCompanyActive = useDashboardStore((state) => state.currentCompanyActive)
+  const currentFilterIdActive = useDashboardStore((state) => state.currentFilterIdActive)
+  const setCurrentFilterIdActive = useDashboardStore((state) => state.setCurrentFilterIdActive)
 
-  const handleFilterClick = (id: SensorFilter) => {
+  const handleFilterClick = useCallback((id: SensorFilter) => {
     setCurrentFilterIdActive(id)
-  }
+  }, [setCurrentFilterIdActive])
 
   return (
     <AssetsHeaderStyled>
@@ -46,4 +45,4 @@ function AssetsHeader() {
   )
 }
 
-export default AssetsHeader
+export default memo(AssetsHeader)

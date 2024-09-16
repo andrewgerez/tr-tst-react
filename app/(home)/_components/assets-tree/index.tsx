@@ -10,7 +10,10 @@ import { useCallback } from 'react'
 import { ListContainer, InputWrapper, TreeScrollWrapper } from './styles'
 
 function AssetsTree() {
-  const { currentCompanyActive, filterQuery, setFilterQuery } = useDashboardStore()
+  const currentCompanyActive = useDashboardStore((state) => state.currentCompanyActive)
+  const filterQuery = useDashboardStore((state) => state.filterQuery)
+  const setFilterQuery = useDashboardStore((state) => state.setFilterQuery)
+
   const {
     data: tree,
     isLoading: treeIsLoading,

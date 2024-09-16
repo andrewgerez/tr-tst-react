@@ -16,8 +16,11 @@ function useGetCompanies(): UseQueryResult<Companies, unknown> {
   return useQuery({
     queryKey: ['companies'],
     queryFn: fetchGetCompanies,
-    cacheTime: 1000 * 60 * 60,
-    staleTime: 1000 * 60 * 60,
+    cacheTime: 1000 * 60 * 30, // 30 minutes
+    staleTime: 1000 * 60 * 5,  // 5 minutes
+    refetchOnWindowFocus: false,
+    retry: 3,
+    retryDelay: 1000,
   })
 }
 

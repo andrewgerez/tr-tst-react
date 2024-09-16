@@ -11,8 +11,8 @@ import SelectionLoading from '@/components/selection-loading'
 import { HomePageContainer, MainContent, AssetsWrapper, AssetsContainer } from '@/styles/pages/home'
 
 export default function Home() {
-  const { currentCompanyActive } = useDashboardStore()
   const { data: companies, isLoading: companiesIsLoading } = useGetCompanies()
+  const currentCompanyActive = useDashboardStore((state) => state.currentCompanyActive)
 
   if (companiesIsLoading) {
     <Loading />

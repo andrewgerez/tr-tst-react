@@ -31,7 +31,9 @@ function useGetCompanyTree(
   companyId?: string
 ): UseQueryResult<FullCompanyTreeReturn, unknown> {
   const queryClient = useQueryClient()
-  const { currentFilterIdActive, setIsReadyToRenderContent, filterQuery } = useDashboardStore()
+  const currentFilterIdActive = useDashboardStore((state) => state.currentFilterIdActive)
+  const setIsReadyToRenderContent = useDashboardStore((state) => state.setIsReadyToRenderContent)
+  const filterQuery = useDashboardStore((state) => state.filterQuery)
 
   function getCompanyTreeQueryFn(
     companyId?: string
