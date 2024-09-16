@@ -223,6 +223,14 @@ export function filterCompanyTreeByQuery(
     const filterAssetsRecursively = (asset: ExtendedCompanyAsset): ExtendedCompanyAsset | null => {
       const matchesAssetName = asset.name.toLowerCase().includes(lowerCaseQuery)
 
+      if (matchesAssetName) {
+        return {
+          ...asset,
+          components: asset.components,
+          subAssets: asset.subAssets,
+        }
+      }
+
       const filteredComponents = asset.components?.filter(component =>
         component.name.toLowerCase().includes(lowerCaseQuery)
       ) || []
@@ -241,6 +249,14 @@ export function filterCompanyTreeByQuery(
       }
 
       return null
+    }
+
+    if (matchesLocationName) {
+      return {
+        ...location,
+        assets: location.assets,
+        children: location.children,
+      }
     }
 
     const filteredAssets = location.assets.map(filterAssetsRecursively).filter(asset => asset !== null)
