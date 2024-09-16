@@ -2,8 +2,9 @@ import APIService from '@/services/api/api.service'
 import useDashboardStore from '@/store/dashboard'
 import { useQuery, UseQueryResult } from 'react-query'
 import { isValidCompanyId } from '@/utils/regex/company-id-validator'
-import { GetCompanyTreeResponse } from '@/types/endpoints/get-company-tree'
+import { FullCompanyTreeReturn, GetCompanyTreeResponse } from '@/types/endpoints/get-company-tree'
 import { filterCompanyTreeById, filterCompanyTreeByQuery } from '@/utils/business/create-tree-data'
+import { calculateTotalNodesLength } from '@/utils/business/tree-helper'
 
 /**
  * Fetches the full tree of a specific company from the API.
@@ -28,7 +29,7 @@ async function fetchGetCompanyTree(
  */
 function useGetCompanyTree(
   companyId?: string
-): UseQueryResult<GetCompanyTreeResponse, unknown> {
+): UseQueryResult<FullCompanyTreeReturn, unknown> {
   const { currentFilterIdActive, setIsReadyToRenderContent, filterQuery } = useDashboardStore()
 
   function getCompanyTreeQueryFn(
@@ -49,7 +50,11 @@ function useGetCompanyTree(
         filteredData = filterCompanyTreeByQuery(filteredData, filterQuery)
       }
 
-      return filteredData
+
+      return {
+        tree: filteredData,
+        totalTreeNodesCount: calculateTotalNodesLength(filteredData)
+      }
     },
     onSuccess: () => {
       setIsReadyToRenderContent(true)

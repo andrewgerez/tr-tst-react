@@ -26,7 +26,7 @@ const robotoFont = localFont({
 
 const resolution: number = window.innerWidth
 const defaultResolution = 1920
-const baseFontSize = defaultResolution * 0.01
+export const baseFontSize = defaultResolution * 0.01
 
 const percentagePerResolution = (resolution * 100) / defaultResolution
 const percentageInPixel = (baseFontSize * percentagePerResolution) / 100

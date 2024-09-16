@@ -38,3 +38,8 @@ export interface LocationWithAssets extends OriginalLocationWithAssets {
 }
 
 export type FullCompanyTree = LocationWithAssets[]
+
+export type FullCompanyTreeReturn = {
+  tree: FullCompanyTree
+  totalTreeNodesCount: number
+}
