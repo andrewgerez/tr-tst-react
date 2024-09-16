@@ -71,6 +71,14 @@ Prerequisites for installing and running the application locally.
    ```
 
 
+   or use docker :)
+   
+
+4. Start the container using Docker Compose
+   ```sh
+   docker-compose up
+   ```
+
 ## Contact
 
 Andrew Gerez - [Linkedin](https://www.linkedin.com/in/andrewgerez/) - andrewgerez18@gmail.com
