@@ -1,7 +1,7 @@
-import { SensorStatus, SensorType, TreeElementType } from "@/enums/business"
-import { CompanyAsset } from "@/types/endpoints/get-company-assets"
-import { CompanyLocation } from "@/types/endpoints/get-company-locations"
-import { FullCompanyTree, LocationWithAssets, ExtendedCompanyAsset } from "@/types/endpoints/get-company-tree"
+import { SensorStatus, SensorType, TreeElementType } from '@/enums/business'
+import { CompanyAsset } from '@/types/endpoints/get-company-assets'
+import { CompanyLocation } from '@/types/endpoints/get-company-locations'
+import { FullCompanyTree, LocationWithAssets, ExtendedCompanyAsset } from '@/types/endpoints/get-company-tree'
 
 /**
  * Creates a map of locations with initial structure.
@@ -121,7 +121,10 @@ function organizeLocations(
  * @param {CompanyAsset[]} assets - The array of assets.
  * @returns {LocationWithAssets[]} The combined hierarchical structure of locations and assets.
  */
-export function combineLocationsAndAssets(locations: CompanyLocation[], assets: CompanyAsset[]): FullCompanyTree {
+export function combineLocationsAndAssets(
+  locations: CompanyLocation[],
+  assets: CompanyAsset[]
+): FullCompanyTree {
   const locationMap = createLocationMap(locations)
   const { assetMap, isolatedComponents } = addAssetsAndComponents(locationMap, assets)
   const structuredLocations = organizeLocations(locations, locationMap, assetMap)
@@ -141,4 +144,125 @@ export function combineLocationsAndAssets(locations: CompanyLocation[], assets: 
   }
 
   return structuredLocations
+}
+
+/**
+ * Filters the company tree based on the provided sensor filter.
+ * @param {LocationWithAssets[]} locations - The array of locations with assets.
+ * @param {string | null} sensorFilter - The sensor filter to apply (e.g., 'energy', 'alert').
+ * @returns {LocationWithAssets[]} - The filtered array of locations with assets.
+ */
+export function filterCompanyTreeById(
+  locations: LocationWithAssets[],
+  sensorFilter: string | null
+): LocationWithAssets[] {
+  if (!sensorFilter) return locations
+
+  const filterLocationRecursively = (location: LocationWithAssets): LocationWithAssets | null => {
+    if (location.type === TreeElementType.COMPONENT) {
+      const isolatedComponent = location.components && location.components?.[0]
+      const matchesComponent =
+        (sensorFilter === SensorType.ENERGY && isolatedComponent?.sensorType === SensorType.ENERGY) ||
+        (sensorFilter === SensorStatus.ALERT && isolatedComponent?.status === SensorStatus.ALERT)
+
+      return matchesComponent ? location : null
+    }
+
+    const filteredAssets = location.assets.filter(asset => {
+      const matchesAsset =
+        (sensorFilter === SensorType.ENERGY && asset.sensorType === SensorType.ENERGY) ||
+        (sensorFilter === SensorStatus.ALERT && asset.status === SensorStatus.ALERT)
+
+      const matchesComponent = asset.components?.some(component =>
+        (sensorFilter === SensorType.ENERGY && component.sensorType === SensorType.ENERGY) ||
+        (sensorFilter === SensorStatus.ALERT && component.status === SensorStatus.ALERT)
+      )
+
+      return matchesAsset || matchesComponent
+    })
+
+    const filteredChildren = location.children
+      .map(filterLocationRecursively)
+      .filter(child => child !== null) as LocationWithAssets[]
+
+    const hasMatchingAssetsOrChildren = filteredAssets.length > 0 || filteredChildren.length > 0
+
+    if (hasMatchingAssetsOrChildren) {
+      return {
+        ...location,
+        assets: filteredAssets,
+        children: filteredChildren,
+      }
+    }
+
+    return null
+  }
+
+  return locations
+    .map(filterLocationRecursively)
+    .filter(location => location !== null) as LocationWithAssets[]
+}
+
+/**
+ * Filters the company tree based on the provided query string.
+ * @param {LocationWithAssets[]} locations - The array of locations with assets.
+ * @param {string | null} query - The query string to filter locations by name.
+ * @returns {LocationWithAssets[]} - The filtered array of locations with assets.
+ */
+export function filterCompanyTreeByQuery(
+  locations: LocationWithAssets[],
+  query: string | null
+): LocationWithAssets[] {
+  if (!query) return locations
+
+  const lowerCaseQuery = query.toLowerCase()
+
+  const filterLocationRecursively = (location: LocationWithAssets): LocationWithAssets | null => {
+    const matchesLocationName = location.name.toLowerCase().includes(lowerCaseQuery)
+
+    const filterAssetsRecursively = (asset: ExtendedCompanyAsset): ExtendedCompanyAsset | null => {
+      const matchesAssetName = asset.name.toLowerCase().includes(lowerCaseQuery)
+
+      const filteredComponents = asset.components?.filter(component =>
+        component.name.toLowerCase().includes(lowerCaseQuery)
+      ) || []
+
+      const filteredSubAssets = asset.subAssets?.map(filterAssetsRecursively)
+        .filter(subAsset => subAsset !== null) || []
+
+      const hasMatchingComponentsOrSubAssets = filteredComponents.length > 0 || filteredSubAssets.length > 0
+
+      if (matchesAssetName || hasMatchingComponentsOrSubAssets) {
+        return {
+          ...asset,
+          components: filteredComponents,
+          subAssets: filteredSubAssets,
+        }
+      }
+
+      return null
+    }
+
+    const filteredAssets = location.assets.map(filterAssetsRecursively).filter(asset => asset !== null)
+
+    const filteredChildren = location.children
+      .map(filterLocationRecursively)
+      .filter(child => child !== null) as LocationWithAssets[]
+
+    const hasMatchingAssetsOrChildren = filteredAssets.length > 0 || filteredChildren.length > 0
+
+    if (matchesLocationName || hasMatchingAssetsOrChildren) {
+      return {
+        ...location,
+        assets: filteredAssets,
+        children: filteredChildren,
+      }
+    }
+
+    return null
+  }
+
+  return locations
+    .map(filterLocationRecursively)
+    .filter(location => location !== null) as LocationWithAssets[]
 }

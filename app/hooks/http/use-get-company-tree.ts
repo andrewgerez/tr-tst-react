@@ -2,8 +2,8 @@ import APIService from '@/services/api/api.service'
 import useDashboardStore from '@/store/dashboard'
 import { useQuery, UseQueryResult } from 'react-query'
 import { isValidCompanyId } from '@/utils/regex/company-id-validator'
-import { GetCompanyTreeResponse, LocationWithAssets } from '@/types/endpoints/get-company-tree'
-import { TreeElementType } from '@/enums/business'
+import { GetCompanyTreeResponse } from '@/types/endpoints/get-company-tree'
+import { filterCompanyTreeById, filterCompanyTreeByQuery } from '@/utils/business/create-tree-data'
 
 /**
  * Fetches the full tree of a specific company from the API.
@@ -22,54 +22,6 @@ async function fetchGetCompanyTree(
   return data
 }
 
-function filterCompanyTree(locations: LocationWithAssets[], sensorFilter: string | null): LocationWithAssets[] {
-  if (!sensorFilter) return locations
-
-  const filterLocationRecursively = (location: LocationWithAssets): LocationWithAssets | null => {
-    if (location.type === TreeElementType.COMPONENT) {
-      const isolatedComponent = location.components && location.components?.[0]
-      const matchesComponent =
-        (sensorFilter === 'energy' && isolatedComponent?.sensorType === 'energy') ||
-        (sensorFilter === 'alert' && isolatedComponent?.status === 'alert')
-
-      return matchesComponent ? location : null
-    }
-
-    const filteredAssets = location.assets.filter(asset => {
-      const matchesAsset =
-        (sensorFilter === 'energy' && asset.sensorType === 'energy') ||
-        (sensorFilter === 'alert' && asset.status === 'alert')
-
-      const matchesComponent = asset.components?.some(component =>
-        (sensorFilter === 'energy' && component.sensorType === 'energy') ||
-        (sensorFilter === 'alert' && component.status === 'alert')
-      )
-
-      return matchesAsset || matchesComponent
-    })
-
-    const filteredChildren = location.children
-      .map(filterLocationRecursively)
-      .filter(child => child !== null) as LocationWithAssets[]
-
-    const hasMatchingAssetsOrChildren = filteredAssets.length > 0 || filteredChildren.length > 0
-
-    if (hasMatchingAssetsOrChildren) {
-      return {
-        ...location,
-        assets: filteredAssets,
-        children: filteredChildren,
-      }
-    }
-
-    return null
-  }
-
-  return locations
-    .map(filterLocationRecursively)
-    .filter(location => location !== null) as LocationWithAssets[]
-}
-
 /**
  * Custom hook to fetch and cache the full tree of a specific company using react-query.
  * @param {string} companyId - The ID of the company.
@@ -77,7 +29,7 @@ function filterCompanyTree(locations: LocationWithAssets[], sensorFilter: string
 function useGetCompanyTree(
   companyId?: string
 ): UseQueryResult<GetCompanyTreeResponse, unknown> {
-  const { currentFilterIdActive, setIsReadyToRenderContent } = useDashboardStore()
+  const { currentFilterIdActive, setIsReadyToRenderContent, filterQuery } = useDashboardStore()
 
   function getCompanyTreeQueryFn(
     companyId?: string
@@ -86,11 +38,16 @@ function useGetCompanyTree(
   }
 
   return useQuery({
-    queryKey: ['getCompanyTree', companyId, currentFilterIdActive],
+    queryKey: ['getCompanyTree', companyId, currentFilterIdActive, filterQuery],
     queryFn: async () => {
       setIsReadyToRenderContent(false)
       const data = await getCompanyTreeQueryFn(companyId)()
-      const filteredData = filterCompanyTree(data, currentFilterIdActive)
+
+      let filteredData = filterCompanyTreeById(data, currentFilterIdActive)
+
+      if (filterQuery) {
+        filteredData = filterCompanyTreeByQuery(filteredData, filterQuery)
+      }
 
       return filteredData
     },

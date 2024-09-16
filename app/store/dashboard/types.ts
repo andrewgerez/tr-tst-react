@@ -12,6 +12,9 @@ export type DashboardStoreParams = {
   currentFilterIdActive: SensorFilter | null
   setCurrentFilterIdActive: (filter: SensorFilter) => void
 
+  filterQuery: string
+  setFilterQuery: (value: string) => void
+
   isReadyToRenderContent: boolean
   setIsReadyToRenderContent: (value: boolean) => void
 

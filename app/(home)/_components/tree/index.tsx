@@ -17,10 +17,10 @@ const TreeNodeComponent = ({
   currentAssetActive: Asset | null,
   handleAssetClick: (asset: ExtendedCompanyAsset) => void
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
-  const hasChildren = 'children' in node && node.children && node.children.length > 0
-  const hasAssets = 'assets' in node && node.assets && node.assets.length > 0
+  const hasChildren = 'children' in node && node.children?.length > 0
+  const hasAssets = 'assets' in node && node.assets?.length > 0
   const hasSubAssets = 'subAssets' in node && node.subAssets && node.subAssets.length > 0
   const isolatedComponent = isIsolatedComponent(node)
   const nodeElement = isolatedComponent ? node.components?.[0] : node
@@ -43,9 +43,9 @@ const TreeNodeComponent = ({
 
   return (
     <TreeNode>
-      <NodeContent>
+      <NodeContent onClick={handleToggle}>
         {(hasChildren || hasAssets || hasSubAssets) && (
-          <ExpandIcon onClick={handleToggle} $isOpen={isOpen}>
+          <ExpandIcon $isOpen={isOpen}>
             <ArrowIcon />
           </ExpandIcon>
         )}
