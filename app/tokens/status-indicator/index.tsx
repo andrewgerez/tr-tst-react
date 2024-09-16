@@ -5,7 +5,11 @@ import { StatusStyled } from './styles'
 
 function StatusIndicator({ status, type }: StatusIndicatorProps) {
   if (type === SensorType.ENERGY) {
-    return (<ThunderStatusSVGIcon />)
+    return (
+      <ThunderStatusSVGIcon
+        fill={status === SensorStatus.ALERT ? '#ED3833' : undefined}
+      />
+    )
   }
 
   return (
