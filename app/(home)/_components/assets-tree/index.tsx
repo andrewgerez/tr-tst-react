@@ -33,7 +33,6 @@ function AssetsTree() {
             value={filterQuery}
             placeholder='Buscar Ativo ou Local'
             onChange={handleInputChange}
-            disabled={isNotAbleToRender}
           />
           <SearchIcon />
         </InputWrapper>

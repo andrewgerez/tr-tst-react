@@ -1,7 +1,7 @@
+import Home from '@/(home)/page'
 import { test, expect, vi } from 'vitest'
 import { screen } from '@testing-library/react'
 import { renderWithProviders } from '@/tests/test-utils'
-import Home from '@/(home)/page'
 import '@testing-library/jest-dom/vitest'
 
 vi.mock('next/font/local', () => ({
@@ -12,7 +12,7 @@ vi.mock('next/font/local', () => ({
   }),
 }))
 
-test('initial home page load', async () => {
+test('renders initial home page with correct heading', () => {
   renderWithProviders(<Home />)
 
   const element = screen.getByRole('heading', { level: 5 })
