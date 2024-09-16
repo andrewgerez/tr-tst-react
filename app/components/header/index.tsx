@@ -4,6 +4,7 @@ import { GoldIcon, Logo } from '@/assets'
 import { Companies, Company } from '@/types/endpoints/get-companies'
 import { ComponentSize, ComponentVariant } from '@/enums'
 import { Container } from './styles'
+import { memo } from 'react'
 
 type HeaderProps = {
   companies?: Companies
@@ -39,4 +40,4 @@ function Header({ companies }: Readonly<HeaderProps>) {
   )
 }
 
-export default Header
+export default memo(Header)

@@ -1,6 +1,6 @@
 import APIService from '@/services/api/api.service'
 import useDashboardStore from '@/store/dashboard'
-import { useQuery, UseQueryResult } from 'react-query'
+import { useQuery, useQueryClient, UseQueryResult } from 'react-query'
 import { isValidCompanyId } from '@/utils/regex/company-id-validator'
 import { FullCompanyTreeReturn, GetCompanyTreeResponse } from '@/types/endpoints/get-company-tree'
 import { filterCompanyTreeById, filterCompanyTreeByQuery } from '@/utils/business/create-tree-data'
@@ -30,6 +30,7 @@ async function fetchGetCompanyTree(
 function useGetCompanyTree(
   companyId?: string
 ): UseQueryResult<FullCompanyTreeReturn, unknown> {
+  const queryClient = useQueryClient()
   const { currentFilterIdActive, setIsReadyToRenderContent, filterQuery } = useDashboardStore()
 
   function getCompanyTreeQueryFn(
@@ -42,14 +43,23 @@ function useGetCompanyTree(
     queryKey: ['getCompanyTree', companyId, currentFilterIdActive, filterQuery],
     queryFn: async () => {
       setIsReadyToRenderContent(false)
-      const data = await getCompanyTreeQueryFn(companyId)()
+
+      const cachedData = queryClient.getQueryData<GetCompanyTreeResponse>(['getCompanyTree', companyId])
+
+      let data: GetCompanyTreeResponse
+
+      if (cachedData) {
+        data = cachedData
+      } else {
+        data = await getCompanyTreeQueryFn(companyId)()
+        queryClient.setQueryData(['getCompanyTree', companyId], data)
+      }
 
       let filteredData = filterCompanyTreeById(data, currentFilterIdActive)
 
       if (filterQuery) {
         filteredData = filterCompanyTreeByQuery(filteredData, filterQuery)
       }
-
 
       return {
         tree: filteredData,
