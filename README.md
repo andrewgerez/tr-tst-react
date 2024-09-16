@@ -52,6 +52,8 @@ The primary focus of the project was performance, particularly in rendering larg
 
 * Additional Next.js features: There was still interest in exploring features like Server Components and Actions.
 
+* Get greater test coverage: rendering, dom, and stress testing.
+
 ### Built With
 
 This project was developed using the following technologies:
