@@ -65,7 +65,7 @@ class APIService {
     /**
    * Fetches the full tree of a specific company.
    * @param {string} companyId - The ID of the company.
-   * @returns {Promise<any>} A promise that resolves to the full tree of the company.
+   * @returns {Promise<GetCompanyTreeResponse>} A promise that resolves to the full tree of the company.
    */
     public async getCompanyTree(companyId: string): Promise<GetCompanyTreeResponse> {
       return await this.networkService.get<GetCompanyTreeResponse>(
