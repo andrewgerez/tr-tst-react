@@ -1,12 +1,15 @@
 <div align="center">
   <a href="">
-    <img src="app/assets/readme/example.png" alt="Example">
+    <img src="app/assets/readme/banner.png" alt="Tractian Challenge Banner">
   </a>
 
-  <h3 align="center">@ Tractian - Challenge</h3>
+  <h3 align="center">@Tractian Challenge</h3>
 
   <p align="center">
-    a dashboard of company assets.
+    A performant enterprise dashboard application featuring asset trees, designed to efficiently manage and visualize large sets of data.
+  </p>
+  <p align="center">
+    The app optimizes rendering, cache management, and memory usage to ensure smooth interaction and fast loading times, even with extensive asset hierarchies. 🧢
   </p>
 </div>
 
@@ -36,7 +39,7 @@
 
 #### Live demonstration: https://tr-tst-react.vercel.app
 
-#### Demonstration Video: https://youtu.be/4ic1Qhtfa4A
+#### Demonstration video: https://youtu.be/4ic1Qhtfa4A
 
 The project was developed using Next.js version 14, leveraging several key technologies such as TanStack Query, TanStack Virtual, and Zustand. These tools were essential for managing HTTP state, global state, and DOM virtualization, ensuring efficient memory allocation.
 
