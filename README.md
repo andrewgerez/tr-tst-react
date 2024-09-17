@@ -1,12 +1,12 @@
 <div align="center">
   <a href="">
-    <img src="app/assets/readme/example.png" alt="Example">
+    <img src="app/assets/readme/banner.png" alt="Tractian Challenge Banner">
   </a>
 
-  <h3 align="center">@ Tractian - Challenge</h3>
+  <h3 align="center">@Tractian Challenge</h3>
 
   <p align="center">
-    a dashboard of company assets.
+    a dashboard of companies with asset trees. 🧢
   </p>
 </div>
 
