@@ -6,8 +6,8 @@ import AssetsTree from '@/(home)/_components/assets-tree'
 import AssetContent from '@/(home)/_components/asset-content'
 import useDashboardStore from '@/store/dashboard'
 import Loading from '@/components/loading'
-import { useGetCompanies } from '@/hooks/http'
 import SelectionLoading from '@/components/selection-loading'
+import { useGetCompanies } from '@/hooks/http'
 import { HomePageContainer, MainContent, AssetsWrapper, AssetsContainer } from '@/styles/pages/home'
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
   const currentCompanyActive = useDashboardStore((state) => state.currentCompanyActive)
 
   if (companiesIsLoading) {
-    <Loading />
+    return <Loading />
   }
 
   return (
