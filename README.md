@@ -6,7 +6,10 @@
   <h3 align="center">@Tractian Challenge</h3>
 
   <p align="center">
-    a dashboard of companies with asset trees. 🧢
+    A performant enterprise dashboard application featuring asset trees, designed to efficiently manage and visualize large sets of data.
+  </p>
+  <p align="center">
+    The app optimizes rendering, cache management, and memory usage to ensure smooth interaction and fast loading times, even with extensive asset hierarchies. 🧢
   </p>
 </div>
 
