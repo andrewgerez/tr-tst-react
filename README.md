@@ -36,7 +36,7 @@
 
 #### Live demonstration: https://tr-tst-react.vercel.app
 
-#### Demonstration Video: https://youtu.be/4ic1Qhtfa4A
+#### Demonstration video: https://youtu.be/4ic1Qhtfa4A
 
 The project was developed using Next.js version 14, leveraging several key technologies such as TanStack Query, TanStack Virtual, and Zustand. These tools were essential for managing HTTP state, global state, and DOM virtualization, ensuring efficient memory allocation.
 
